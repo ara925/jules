@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  backend:
+    build: ./aiden_ai_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./aiden_ai_backend:/app # For live reloading during development
+    restart: unless-stopped
+
+  frontend:
+    build: ./aiden_ai_frontend
+    ports:
+      - "8080:80" # Access frontend via localhost:8080
+    depends_on:
+      - backend # Optional: ensures backend starts before frontend, though not strictly necessary for static files
+    restart: unless-stopped
