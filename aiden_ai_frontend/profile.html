@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile - Aiden AI</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <header>
@@ -12,13 +13,61 @@
             <a href="index.html">Chat</a> |
             <a href="contacts.html">Contacts</a> |
             <a href="inbox.html">Inbox</a> |
-            <button id="logout-button" class="nav-button">Logout</button>
+            <a href="organization_management.html" id="nav-org-management-profile" style="display:none;">Manage Organization</a> |
+            <a href="admin_audit_logs.html" id="nav-admin-audit-logs-profile" style="display:none;">Admin Audit</a> |
+            <button id="logout-button-profile" class="nav-button">Logout</button>
         </nav>
     </header>
     <div class="page-container">
         <h2>User Profile</h2>
-        <div id="profile-info" class="auth-container" style="text-align: left; padding: 20px;">
-            <p>Loading profile...</p>
+        <div id="profile-display-section" class="auth-container" style="text-align: left; padding: 20px; margin-bottom: 20px;">
+            <h4>My Details</h4>
+            <div id="profile-info">
+                <p>Loading profile...</p>
+            </div>
+            <button id="edit-profile-btn" class="action-button" style="margin-top:15px;">Edit Profile</button>
+        </div>
+
+        <div id="edit-profile-form-section" class="auth-container" style="display:none; text-align: left; padding: 20px; margin-bottom: 20px;">
+            <h3>Edit Your Profile</h3>
+            <form id="update-profile-form">
+                <div>
+                    <label for="update-full-name">Full Name:</label>
+                    <input type="text" id="update-full-name" name="full_name" />
+                </div>
+                <div>
+                    <label for="update-job-title">Job Title:</label>
+                    <input type="text" id="update-job-title" name="job_title" />
+                </div>
+                <div>
+                    <label for="update-profile-picture-url">Profile Picture URL:</label>
+                    <input type="url" id="update-profile-picture-url" name="profile_picture_url" placeholder="https://example.com/image.png" />
+                </div>
+                <div style="margin-top:15px;">
+                    <button type="submit" id="save-profile-btn" class="action-button">Save Changes</button>
+                    <button type="button" id="cancel-edit-profile-btn" class="action-button-secondary">Cancel</button>
+                </div>
+            </form>
+            <div id="update-profile-message" class="message" style="display:none; margin-top:15px;"></div>
+        </div>
+
+        <div id="2fa-section" class="auth-container" style="text_align: left; padding: 20px;"> <!-- Corrected text-align -->
+            <h3>Two-Factor Authentication (2FA)</h3>
+            <p>Status: <strong id="2fa-status">Loading...</strong></p>
+            <button id="enable-2fa-btn" class="action-button">Enable 2FA</button>
+            <button id="disable-2fa-btn" class="action-button-danger" style="display:none;">Disable 2FA (Not Implemented)</button>
+            <div id="2fa-setup-area" style="display:none; margin-top:15px;">
+                <p>1. Scan this QR code with your authenticator app (e.g., Google Authenticator, Authy):</p>
+                <div id="qr-code-container" style="margin: 10px 0; display: flex; justify-content: center; align-items: center; min-height: 128px; border: 1px solid #ccc; width: fit-content; padding:10px;">
+                    <!-- QR Code will be generated here -->
+                </div>
+                <p>2. Or manually enter this setup key: <code id="totp-secret-key" style="background: #eee; padding: 2px 5px; border-radius:3px;"></code></p>
+                <p>3. Enter the 6-digit code from your app to verify and enable 2FA:</p>
+                <input type="text" id="totp-code-input" placeholder="6-digit code" style="margin-bottom:10px; padding:8px; width: 150px;" />
+                <button id="verify-2fa-enable-btn" class="action-button">Verify & Enable</button>
+                <button id="cancel-2fa-setup-btn" class="action-button-secondary">Cancel</button>
+            </div>
+            <div id="2fa-message" class="message" style="display:none; margin-top:15px;"></div>
         </div>
     </div>
     <script src="script.js"></script>

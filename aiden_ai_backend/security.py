@@ -1,8 +1,12 @@
+import os # Added
+from dotenv import load_dotenv # Added
 from datetime import datetime, timedelta, timezone
 from typing import Optional, Dict, Any
 
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+
+load_dotenv() # Load .env file variables
 
 # Password Hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -13,14 +17,14 @@ def get_password_hash(password: str) -> str:
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
 
-import uuid # Import uuid for verification token
+import uuid
 
-# JWT Configuration
-SECRET_KEY = "your-super-secret-key-please-change-in-prod"  # KEEP SECRET!
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30 # Token validity: 30 minutes
-EMAIL_VERIFICATION_TOKEN_EXPIRE_HOURS = 24 # For email verification
-PASSWORD_RESET_TOKEN_EXPIRE_HOURS = 1 # For password reset
+# JWT Configuration / Settings from Environment Variables
+SECRET_KEY = os.getenv("AUTH_SECRET_KEY", "a_very_sensible_default_secret_key_for_development_only")
+ALGORITHM = "HS256" # Usually not changed via env for basic security
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("AUTH_ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+EMAIL_VERIFICATION_TOKEN_EXPIRE_HOURS = int(os.getenv("AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRE_HOURS", "24"))
+PASSWORD_RESET_TOKEN_EXPIRE_HOURS = int(os.getenv("AUTH_PASSWORD_RESET_TOKEN_EXPIRE_HOURS", "1"))
 
 def create_verification_token() -> str:
     """Generates a unique token (e.g., UUID) for email verification."""

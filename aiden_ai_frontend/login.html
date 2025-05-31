@@ -18,8 +18,13 @@
                 <label for="login-password">Password:</label>
                 <input type="password" id="login-password" required>
             </div>
+            <div id="2fa-login-section" style="display:none; margin-top: 10px; margin-bottom: 10px;">
+                <label for="login-2fa-code">2FA Code (from your authenticator app):</label>
+                <input type="text" id="login-2fa-code" name="login-2fa-code" placeholder="6-digit code" />
+            </div>
             <button type="submit" id="login-button">Login</button>
         </form>
+        <div id="login-message" class="message" style="display:none; margin-top:15px;"></div>
         <p><a href="request-password-reset.html">Forgot Password?</a></p>
         <p>Don't have an account? <a href="register.html">Register</a></p>
         <p><a href="index.html">Back to Chat</a></p>

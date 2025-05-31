@@ -143,6 +143,58 @@ header nav a:hover {
     background-color: #e9ecef;
 }
 
+/* Org Management Table Styling (similar to contacts/inbox) */
+#org-members-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#org-members-table th, #org-members-table td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+    vertical-align: top;
+}
+
+#org-members-table th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+}
+
+#org-members-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#org-members-table tr:hover {
+    background-color: #e9ecef;
+}
+#org-members-table td button {
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+
+/* Simple Form Styling (reused by add-member-form via class or direct styling) */
+.styled-form div {
+    margin-bottom: 10px;
+}
+.styled-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.styled-form input[type="email"],
+.styled-form select {
+    width: calc(100% - 22px); /* Full width minus padding/border */
+    max-width: 300px; /* Max width for these inputs */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 
 #chat-container {
     width: 400px;

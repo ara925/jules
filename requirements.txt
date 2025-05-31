@@ -4,3 +4,9 @@ sqlmodel
 passlib[bcrypt]
 python-jose[cryptography]
 python-multipart
+spacy>=3.0.0,<4.0.0
+slowapi==0.1.9
+python-dotenv
+pyotp
+qrcode[pil]
+redis>=4.0.0

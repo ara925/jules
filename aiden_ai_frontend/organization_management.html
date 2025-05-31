@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Management - Aiden AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Chat</a> |
+            <a href="contacts.html">Contacts</a> |
+            <a href="inbox.html">Inbox</a> |
+            <a href="profile.html">Profile</a> |
+            <button id="logout-button-org-mgm" class="nav-button">Logout</button>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        <h1>Organization Management</h1>
+
+        <div id="org-details-section" class="auth-container" style="margin-bottom: 20px; text-align: left;">
+            <h3>Organization Details</h3>
+            <p><strong>Name:</strong> <span id="org-name-display">Loading...</span></p>
+            <p><strong>ID:</strong> <span id="org-id-display">Loading...</span></p>
+        </div>
+
+        <div id="org-management-content" style="display: none;"> <!-- Hidden until permission check passes -->
+            <h2>Members</h2>
+            <table id="org-members-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Joined At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="org-members-table-body">
+                    <!-- Member rows will be populated here -->
+                </tbody>
+            </table>
+            <p id="no-members-message" style="display:none;">This organization has no members yet (besides you, if you are the owner/admin).</p>
+
+            <div id="add-member-section" class="auth-container" style="margin-top: 30px; text-align: left;">
+                <h2>Add New Member</h2>
+                <form id="add-member-form">
+                    <div>
+                        <label for="member-email-input">User Email:</label>
+                        <input type="email" id="member-email-input" required />
+                    </div>
+                    <div>
+                        <label for="member-role-select">Role:</label>
+                        <select id="member-role-select"></select>
+                    </div>
+                    <button type="submit" class="action-button">Add Member</button>
+                </form>
+            </div>
+        </div>
+        <div id="org-management-messages" class="message" style="display:none; margin-top: 15px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
