@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email - Aiden AI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .verification-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .message {
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container verification-container">
+        <h2>Email Verification</h2>
+        <div id="verification-message" class="message" style="display:none;"></div>
+        <p><a href="login.html">Go to Login</a></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const messageDiv = document.getElementById('verification-message');
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            function showMessage(text, type) {
+                messageDiv.textContent = text;
+                messageDiv.className = 'message ' + type; // Reset classes and add new type
+                messageDiv.style.display = 'block';
+            }
+
+            if (token) {
+                showMessage('Verifying your email, please wait...', 'info'); // Info style can be added
+                fetch(`http://localhost:8000/users/verify-email/${token}`, {
+                    method: 'GET',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => { throw new Error(err.detail || 'Verification failed') });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    showMessage(data.message || 'Email verified successfully!', 'success');
+                })
+                .catch(error => {
+                    console.error("Verification error:", error);
+                    showMessage(`Verification failed: ${error.message}`, 'error');
+                });
+            } else {
+                showMessage('Invalid or missing verification token in the link.', 'error');
+            }
+        });
+    </script>
+</body>
+</html>

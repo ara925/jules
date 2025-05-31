@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox - Aiden AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Chat</a> |
+            <a href="contacts.html">Contacts</a> |
+            <a href="profile.html">Profile</a> |
+            <button id="logout-button-inbox" class="nav-button">Logout</button>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        <h1>Ingested Emails</h1>
+        <div id="inbox-messages" class="message" style="display:none; margin-bottom: 15px;"></div>
+
+        <table id="inbox-emails-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Sender</th>
+                    <th>Received At</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="inbox-emails-table-body">
+                <!-- Email rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

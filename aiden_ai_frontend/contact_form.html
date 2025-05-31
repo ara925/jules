@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - Aiden AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="contacts.html">Back to Contacts List</a> |
+            <button id="logout-button-contact-form" class="nav-button">Logout</button>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        <h2 id="contact-form-title">Add New Contact</h2>
+        <form id="contact-form" class="auth-container" style="width: auto; max-width: 500px;">
+            <input type="hidden" id="contact-id">
+
+            <div>
+                <label for="contact-first-name">First Name:</label>
+                <input type="text" id="contact-first-name" required>
+            </div>
+            <div>
+                <label for="contact-last-name">Last Name:</label>
+                <input type="text" id="contact-last-name">
+            </div>
+            <div>
+                <label for="contact-email">Email:</label>
+                <input type="email" id="contact-email" required>
+            </div>
+            <div>
+                <label for="contact-phone">Phone Number:</label>
+                <input type="tel" id="contact-phone">
+            </div>
+            <div>
+                <label for="contact-company">Company:</label>
+                <input type="text" id="contact-company">
+            </div>
+            <div>
+                <label for="contact-notes">Notes:</label>
+                <textarea id="contact-notes" rows="4"></textarea>
+            </div>
+
+            <button type="submit" id="save-contact-btn" class="action-button">Save Contact</button>
+        </form>
+        <div id="contact-form-messages" class="message" style="display:none; margin-top: 15px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -10,14 +10,26 @@
     <header>
         <nav>
             <a href="login.html">Login</a> |
-            <a href="register.html">Register</a>
+            <a href="register.html">Register</a> |
+            <a href="profile.html">Profile</a> |
+            <a href="contacts.html">Contacts</a> |
+            <a href="inbox.html">Inbox</a>
         </nav>
     </header>
-    <div id="chat-container">
-        <div id="chat-messages"></div>
-        <div id="input-area">
-            <input type="text" id="message-input" placeholder="Type your message...">
-            <button id="send-button">Send</button>
+    <div class="page-container">
+        <h2>Aiden AI Chat</h2>
+        <div id="conversation-join-area" class="auth-container" style="margin-bottom: 20px; width:auto;">
+            <input type="text" id="conversation-id-input" placeholder="Enter Conversation ID">
+            <button id="join-conversation-button">Join Conversation</button>
+        </div>
+
+        <div id="chat-container" style="display:none;">
+            <h3 id="current-conversation-id" style="text-align: center; margin-top:0;"></h3>
+            <div id="chat-messages"></div>
+            <div id="input-area">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

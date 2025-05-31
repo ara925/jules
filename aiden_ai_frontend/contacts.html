@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Contacts - Aiden AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Chat</a> |
+            <a href="profile.html">Profile</a> |
+            <a href="inbox.html">Inbox</a> |
+            <button id="logout-button-contacts" class="nav-button">Logout</button>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        <h2>My Contacts</h2>
+        <button id="add-contact-btn" class="action-button" style="margin-bottom: 20px;">Add New Contact</button>
+        <div id="contacts-messages" class="message" style="display:none; margin-bottom:15px;"></div>
+
+        <table id="contacts-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Company</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contacts-table-body">
+                <!-- Contact rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <div id="no-contacts-message" style="display:none; margin-top:20px;">
+            <p>You don't have any contacts yet. Click "Add New Contact" to get started!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
